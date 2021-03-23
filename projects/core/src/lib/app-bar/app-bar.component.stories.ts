@@ -15,6 +15,11 @@ export default {
         options: ['primary', 'accent', 'warn', 'default']
       }
     },
+  },
+  parameters: {
+    design: {
+      review: 'https://xd.adobe.com/view/6a1a71f6-b70c-4e75-b977-5c1eb8bf4a97-3f49/'
+    }
   }
 } as Meta;
 

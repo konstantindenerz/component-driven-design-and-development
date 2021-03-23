@@ -17,9 +17,106 @@
                 "line": 6
             },
             "type": "injectable"
+        },
+        {
+            "name": "SearchService",
+            "id": "injectable-SearchService-6f00f20f089a526b4fa5d91917e97f60",
+            "file": "projects/frontend/src/search/search-page/search.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "search",
+                    "args": [
+                        {
+                            "name": "queryText",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any[]>",
+                    "typeParameters": [],
+                    "line": 6,
+                    "jsdoctags": [
+                        {
+                            "name": "queryText",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "",
+            "sourceCode": "import {Observable} from 'rxjs';\nimport {Injectable} from '@angular/core';\n\n@Injectable({providedIn: 'root'})\nexport class SearchService {\n  search(queryText): Observable<any[]> {\n    throw new Error('not implemented');\n  }\n}\n",
+            "type": "injectable"
         }
     ],
-    "classes": [],
+    "classes": [
+        {
+            "name": "SearchServiceMock",
+            "id": "class-SearchServiceMock-572f04382ae7361df6ca9ac072dfb705",
+            "file": "projects/frontend/src/search/search-page/search.service.mock.ts",
+            "type": "class",
+            "sourceCode": "import {SearchService} from './search.service';\nimport {Observable, of} from 'rxjs';\n\nexport class SearchServiceMock extends SearchService {\n  search(query): Observable<any[]> {\n    return of(!!query ? [{position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},\n      {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},\n      {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},\n      {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},\n      {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},\n      {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},\n      {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},\n      {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},\n      {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},\n      {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},\n    ] : [{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},]);\n  }\n}\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "search",
+                    "args": [
+                        {
+                            "name": "query",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any[]>",
+                    "typeParameters": [],
+                    "line": 5,
+                    "jsdoctags": [
+                        {
+                            "name": "query",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "search",
+                    "args": [
+                        {
+                            "name": "queryText",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any[]>",
+                    "typeParameters": [],
+                    "line": 6,
+                    "jsdoctags": [
+                        {
+                            "name": "queryText",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "SearchService"
+                    }
+                }
+            ],
+            "indexSignatures": [],
+            "extends": "SearchService",
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
     "directives": [],
     "components": [
         {
@@ -168,7 +265,7 @@
         },
         {
             "name": "SearchPageComponent",
-            "id": "component-SearchPageComponent-136b853133f09246ee8579e495425ce7",
+            "id": "component-SearchPageComponent-8394d15c17053a4ac25339e52ecf5544",
             "file": "projects/frontend/src/search/search-page/search-page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -176,7 +273,9 @@
             "outputs": [],
             "providers": [],
             "selector": "search-page",
-            "styleUrls": [],
+            "styleUrls": [
+                "search-page.component.scss"
+            ],
             "styles": [],
             "templateUrl": [
                 "search-page.component.html"
@@ -186,24 +285,73 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
+                    "name": "displayedColumns",
+                    "defaultValue": "['position', 'name', 'weight', 'symbol']",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "items",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
                     "name": "value",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 9
+                    "line": 12
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "search",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20
+                }
+            ],
             "hostBindings": [],
             "hostListeners": [],
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {Component, Input, OnInit} from '@angular/core';\n\n@Component({\n  selector: 'search-page',\n  templateUrl: 'search-page.component.html'\n})\n\nexport class SearchPageComponent {\n  value: string;\n}\n",
+            "sourceCode": "import {Component} from '@angular/core';\nimport {SearchService} from './search.service';\nimport {Observable} from 'rxjs';\n\n@Component({\n  selector: 'search-page',\n  templateUrl: 'search-page.component.html',\n  styleUrls: ['search-page.component.scss']\n})\n\nexport class SearchPageComponent {\n  value: string;\n  items: Observable<any>;\n  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];\n\n  constructor(private searchService: SearchService) {\n    this.search();\n  }\n\n  search(): void {\n    this.items = this.searchService.search(this.value);\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": "",
+            "styleUrlsData": [
+                {
+                    "data": "table {\n  width: 100%;\n}\n",
+                    "styleUrl": "search-page.component.scss"
+                }
+            ],
             "stylesData": "",
-            "templateData": "<mat-form-field class=\"example-form-field\">\n  <mat-label>Clearable input</mat-label>\n  <input matInput type=\"text\" [(ngModel)]=\"value\">\n  <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n    <mat-icon>close</mat-icon>\n  </button>\n</mat-form-field>\n"
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "searchService",
+                        "type": "SearchService"
+                    }
+                ],
+                "line": 14,
+                "jsdoctags": [
+                    {
+                        "name": "searchService",
+                        "type": "SearchService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<mat-form-field class=\"example-form-field\">\n  <mat-label>Search field</mat-label>\n  <input matInput type=\"text\" [(ngModel)]=\"value\" (ngModelChange)=\"search()\">\n</mat-form-field>\n<table mat-table [dataSource]=\"items | async\" class=\"mat-elevation-z8\">\n\n  <!--- Note that these columns can be defined in any order.\n        The actual rendered columns are set as a property on the row definition\" -->\n\n  <!-- Position Column -->\n  <ng-container matColumnDef=\"position\">\n    <th mat-header-cell *matHeaderCellDef> No. </th>\n    <td mat-cell *matCellDef=\"let element\"> {{element.position}} </td>\n  </ng-container>\n\n  <!-- Name Column -->\n  <ng-container matColumnDef=\"name\">\n    <th mat-header-cell *matHeaderCellDef> Name </th>\n    <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n  </ng-container>\n\n  <!-- Weight Column -->\n  <ng-container matColumnDef=\"weight\">\n    <th mat-header-cell *matHeaderCellDef> Weight </th>\n    <td mat-cell *matCellDef=\"let element\"> {{element.weight}} </td>\n  </ng-container>\n\n  <!-- Symbol Column -->\n  <ng-container matColumnDef=\"symbol\">\n    <th mat-header-cell *matHeaderCellDef> Symbol </th>\n    <td mat-cell *matCellDef=\"let element\"> {{element.symbol}} </td>\n  </ng-container>\n\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n</table>\n"
         }
     ],
     "modules": [
@@ -364,11 +512,7 @@
                 },
                 {
                     "type": "imports",
-                    "elements": [
-                        {
-                            "name": "MatIconR"
-                        }
-                    ]
+                    "elements": []
                 },
                 {
                     "type": "exports",
@@ -416,6 +560,14 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/core/src/lib/button/button.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/core/src/lib/table/table.component.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -488,6 +640,14 @@
                 "file": "projects/core/src/lib/button/button.component.stories.ts",
                 "type": "Story",
                 "defaultValue": "(props) => ({\n  template: `\n<ng-container [ngSwitch]=\"type\">\n    <button *ngSwitchCase=\"'default'\" mat-button [color]=\"color\" [disabled]=\"disabled\" (click)=\"handleClick($event)\">{{label}}</button>\n    <button *ngSwitchCase=\"'raised'\" mat-raised-button [color]=\"color\" [disabled]=\"disabled\" (click)=\"handleClick($event)\">{{label}}</button>\n    <button *ngSwitchCase=\"'stroked'\" mat-stroked-button [color]=\"color\" [disabled]=\"disabled\" (click)=\"handleClick($event)\">{{label}}</button>\n    <button *ngSwitchCase=\"'flat'\" mat-flat-button [color]=\"color\" [disabled]=\"disabled\" (click)=\"handleClick($event)\">{{label}}</button>\n</ng-container>\n`,\n  props,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/core/src/lib/table/table.component.stories.ts",
+                "type": "Story",
+                "defaultValue": "(props) => ({\n  template: `\n  <table mat-table [dataSource]=\"items\" class=\"mat-elevation-z8\" style=\"width: 100%\">\n\n  <!--- Note that these columns can be defined in any order.\n        The actual rendered columns are set as a property on the row definition\" -->\n\n  <!-- Position Column -->\n  <ng-container [matColumnDef]=\"column\" *ngFor=\"let column of displayedColumns\">\n    <th mat-header-cell *matHeaderCellDef> {{column}} </th>\n    <td mat-cell *matCellDef=\"let element\"> {{element[column]}} </td>\n  </ng-container>\n\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n</table>\n\n`,\n  props,\n})"
             },
             {
                 "name": "Template",
@@ -586,6 +746,24 @@
                     "file": "projects/core/src/lib/button/button.component.stories.ts",
                     "type": "Story",
                     "defaultValue": "(props) => ({\n  template: `\n<ng-container [ngSwitch]=\"type\">\n    <button *ngSwitchCase=\"'default'\" mat-button [color]=\"color\" [disabled]=\"disabled\" (click)=\"handleClick($event)\">{{label}}</button>\n    <button *ngSwitchCase=\"'raised'\" mat-raised-button [color]=\"color\" [disabled]=\"disabled\" (click)=\"handleClick($event)\">{{label}}</button>\n    <button *ngSwitchCase=\"'stroked'\" mat-stroked-button [color]=\"color\" [disabled]=\"disabled\" (click)=\"handleClick($event)\">{{label}}</button>\n    <button *ngSwitchCase=\"'flat'\" mat-flat-button [color]=\"color\" [disabled]=\"disabled\" (click)=\"handleClick($event)\">{{label}}</button>\n</ng-container>\n`,\n  props,\n})"
+                }
+            ],
+            "projects/core/src/lib/table/table.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/core/src/lib/table/table.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/core/src/lib/table/table.component.stories.ts",
+                    "type": "Story",
+                    "defaultValue": "(props) => ({\n  template: `\n  <table mat-table [dataSource]=\"items\" class=\"mat-elevation-z8\" style=\"width: 100%\">\n\n  <!--- Note that these columns can be defined in any order.\n        The actual rendered columns are set as a property on the row definition\" -->\n\n  <!-- Position Column -->\n  <ng-container [matColumnDef]=\"column\" *ngFor=\"let column of displayedColumns\">\n    <th mat-header-cell *matHeaderCellDef> {{column}} </th>\n    <td mat-cell *matCellDef=\"let element\"> {{element[column]}} </td>\n  </ng-container>\n\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n</table>\n\n`,\n  props,\n})"
                 }
             ],
             "projects/frontend/src/search/search-page/search-page.component.stories.ts": [
@@ -737,6 +915,26 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/core/src/lib/table/table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/table/table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/core/src/test.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -810,6 +1008,24 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "SearchPageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/frontend/src/search/search-page/search.service.mock.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "SearchServiceMock",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/frontend/src/search/search-page/search.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "SearchService",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
                 "status": "low"

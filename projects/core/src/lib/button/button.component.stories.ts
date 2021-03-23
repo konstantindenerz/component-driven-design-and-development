@@ -20,6 +20,11 @@ export default {
         options: ['default', 'raised', 'stroked', 'flat']
       }
     }
+  },
+  parameters: {
+    design: {
+      review: 'https://xd.adobe.com/view/c7d468bc-b076-4e01-b955-2c1911caa654-9287/'
+    }
   }
 } as Meta;
 
